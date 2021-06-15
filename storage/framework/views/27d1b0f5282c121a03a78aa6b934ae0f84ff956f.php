@@ -1,6 +1,12 @@
 <?php $__env->startSection('content'); ?>
     <div>
         <h1 class="mb-5">OUR COMICS</h1>
+        <?php if(session('deleted')): ?>
+            <div class="alert alert-success">
+                <strong><?php echo e(session('deleted')); ?></strong>
+                succesfully deleted.
+            </div>
+        <?php endif; ?>
 
         <table class="table">
             <thead>
@@ -21,8 +27,19 @@
                             <a class="btn btn-success" href="<?php echo e(route('comics.show', $comic->id)); ?>">
                                 SHOW</a>
                         </td>
-                        <td>EDIT</td>
-                        <td>DELETE</td>
+                        <td>
+                            <a class="btn btn-primary" href="<?php echo e(route('comics.edit', $comic->id)); ?>">
+                                EDIT
+                            </a>
+                        </td>
+                        <td>
+                            <form action="<?php echo e(route('comics.destroy', $comic->id)); ?>" method="POST">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('DELETE'); ?>
+
+                                <input type="submit" class="btn btn-danger" value="DELETE">
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>

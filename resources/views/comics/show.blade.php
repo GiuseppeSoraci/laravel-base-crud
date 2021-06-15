@@ -7,6 +7,7 @@
             <span class="badge bg-primary">{{ $comics->series }}</span>
             <div>Type: {{ $comics->type }}</div>
             <div>Sale Date: {{ $comics->sale_date }}</div>
+            <a class="badge bg-warning" href="{{ route('comics.edit', $comics->id) }}">Edit</a>
         </div>
 
         <div class="row">

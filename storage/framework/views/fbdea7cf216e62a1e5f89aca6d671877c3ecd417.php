@@ -5,6 +5,7 @@
             <span class="badge bg-primary"><?php echo e($comics->series); ?></span>
             <div>Type: <?php echo e($comics->type); ?></div>
             <div>Sale Date: <?php echo e($comics->sale_date); ?></div>
+            <a class="badge bg-warning" href="<?php echo e(route('comics.edit', $comics->id)); ?>">Edit</a>
         </div>
 
         <div class="row">
